@@ -1,0 +1,37 @@
+.footer{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: #081606
+}
+
+.content ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    margin: auto;
+    padding: 10px;
+}
+.content ul li {
+   margin: 0 7px;
+}
+.btn-BuysBomb{
+    border-radius: 27px;
+    filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.2 ));
+    background: #71ff71;
+    font-family: "poppins";
+    font-size: 12px;
+    font-weight: 400;
+    font-style: normal;
+    color: #081606;
+    height: 27px;
+    line-height: 10px;
+}
+
+.btn-BuysBomb:hover{
+    background-color: #F4FF7D;
+}
+.btn-BuysBomb a{
+    text-decoration: none;
+    color: black;
+}

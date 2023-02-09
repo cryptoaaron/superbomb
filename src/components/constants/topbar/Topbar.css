@@ -1,0 +1,66 @@
+.navbar{
+    background-color: #081606 !important;
+    z-index: 99;
+}
+.navbar-brand{
+    font-family: 'dharma-gothic-e-exbold', sans-serif;font-size: 44px;
+font-weight: bold;
+line-height: 44px;
+font-style: normal;
+text-align: left;
+color: #f4ff7d;
+text-transform: uppercase;
+}
+.fa-bars {
+    color: #F4FF7D !important;
+    font-size: 30px;
+}
+.navbar-toggler{
+    border:none
+}
+.navbar-toggler:focus {
+    text-decoration: none;
+    outline: 0;
+     box-shadow: none;
+}
+.mobile-nav{
+    display: none;
+}
+.logo img{
+    width: 60px;
+}
+.nav-link{
+    color:#F4FF7D;
+    font-size: 16px;
+    line-height: 16px;
+    font-family: "poppins";
+    font-weight: 400;
+    font-style: normal;
+}
+.nav-link:hover{
+    color: #f3f3eb;
+}
+.nav-link a::after{
+    color: #f3f3eb;
+}
+.navbar-brand:hover{
+    color: #f3f3eb;
+    pointer-events: fill;
+}
+.btn-connect:hover{
+   background-color: #F4FF7D;
+    
+}
+.btn-connect{
+    border-radius: 4px;
+    filter: drop-shadow(0px 3px 3px rgba(0,0,0,0.2 ));
+    background: #71ff71;
+    font-family: "poppins";
+    font-size: 13px;
+    font-weight: 400;
+    line-height: 13px;
+    font-style: normal;
+    color: #051014;
+    width: 139px;
+    height: 48px;
+}
