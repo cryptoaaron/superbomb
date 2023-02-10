@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import "./Topbar.css";
 import logo from "./img/logo.png";
 import "./Responsive.css";
@@ -9,7 +9,7 @@ import { trunc } from "../../../utils/helpers";
 import { CHAIN_ID } from "../../../utils/constants";
 import { switchNetwork } from "../../../contracts/getContracts";
 import { BOMB_CHAIN } from "../../../utils/chainInfo";
-import { log } from "../../../utils/logs";
+import { dashboardContext } from "../../../context";
 
 const Topbar = () => {
   const { account, chainId } = useWeb3React();
@@ -17,6 +17,8 @@ const Topbar = () => {
   const connectMetamask = () => {
     connect(injected);
   };
+
+  const { tokenPrice } = useContext(dashboardContext);
 
   const changeNetwork = () => {
     if (chainId && account && CHAIN_ID !== chainId) {
@@ -27,20 +29,14 @@ const Topbar = () => {
   const switchORaccount =
     account && chainId && CHAIN_ID !== chainId
       ? "Switch Network"
-      : trunc(account, 4, 4);
-  const text =
-    account && chainId && CHAIN_ID !== chainId
-      ? switchORaccount
       : "Connect Wallet";
+
+  const text = CHAIN_ID !== chainId ? switchORaccount : trunc(account, 4, 4);
 
   const func =
     account && chainId && CHAIN_ID !== chainId
       ? changeNetwork
       : connectMetamask;
-
-  log("test", text, account && chainId && CHAIN_ID !== chainId && "test");
-
-  console.log("vals", account, chainId, CHAIN_ID, chainId);
 
   return (
     <div className="topbar">
@@ -98,7 +94,7 @@ const Topbar = () => {
               </li>
               <li className="nav-item">
                 <a className="nav-link" href="/">
-                  $0.12
+                  ${tokenPrice}
                 </a>
               </li>
             </ul>

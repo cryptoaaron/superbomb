@@ -8,10 +8,15 @@ import { setWeb3Provider } from "./contracts/getContracts";
 import { RPC_URL } from "./utils/constants";
 import Web3 from "web3";
 import { log } from "./utils/logs";
+import { DashboardProvider } from "./context";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useToaster } from "./hooks/toaster";
 
 function App() {
   const [loading, setLoading] = useState(true);
   const _ = useEagerConnect();
+  useToaster();
 
   const init = async () => {
     try {
@@ -44,11 +49,14 @@ function App() {
 
   return (
     <>
-      <div id="wrapper">
-        <Topbar></Topbar>
-        <Wrapper></Wrapper>
-        <Footer></Footer>
-      </div>
+      <ToastContainer style={{ fontSize: "0.9rem" }} />
+      <DashboardProvider>
+        <div id="wrapper">
+          <Topbar></Topbar>
+          <Wrapper></Wrapper>
+          <Footer></Footer>
+        </div>
+      </DashboardProvider>
     </>
   );
 }

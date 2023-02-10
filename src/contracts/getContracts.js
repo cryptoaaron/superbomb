@@ -1,7 +1,6 @@
 import Web3 from "web3";
-import VFTPoolABI from "./abis/VFTPool.json";
-import ERC20ABI from "./abis/ERC20.json";
-import factoryABI from "./abis/VFTFactory.json";
+import poolABI from "./abis/Pool.json";
+import sbombABI from "./abis/SBOMB.json";
 import { log } from "../utils/logs";
 import { CONTRACT_ADDRESSES } from "../utils/constants";
 
@@ -11,11 +10,11 @@ export const setWeb3Provider = (provider) => {
   web3 = new Web3(provider);
 };
 
-export const vftPoolContract = (contractAddress) => {
+export const pool = () => {
   let contract;
   try {
     if (window?.web3?.currentProvider || web3) {
-      contract = new web3.eth.Contract(VFTPoolABI, contractAddress);
+      contract = new web3.eth.Contract(poolABI, CONTRACT_ADDRESSES.pool);
     }
     return contract;
   } catch (e) {
@@ -23,23 +22,11 @@ export const vftPoolContract = (contractAddress) => {
   }
 };
 
-export const erc20 = (contractAddress) => {
+export const sbomb = () => {
   let contract;
   try {
     if (window?.web3?.currentProvider || web3) {
-      contract = new web3.eth.Contract(ERC20ABI, contractAddress);
-    }
-    return contract;
-  } catch (e) {
-    log("contract", e);
-  }
-};
-
-export const factoryContract = () => {
-  let contract;
-  try {
-    if (window?.web3?.currentProvider || web3) {
-      contract = new web3.eth.Contract(factoryABI, CONTRACT_ADDRESSES.factory);
+      contract = new web3.eth.Contract(sbombABI, CONTRACT_ADDRESSES.sbomb);
     }
     return contract;
   } catch (e) {
@@ -67,10 +54,9 @@ export const switchNetwork = async (
   //
 
   try {
-    // check if the chain to connect to is installed
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
-      params: [{ chainId: "0x" + parseInt(switchToChainDECIMAL).toString(16) }], // chainId must be in hexadecimal numbers
+      params: [{ chainId: "0x" + parseInt(switchToChainDECIMAL).toString(16) }],
     });
   } catch (error) {
     if (error.code === 4902) {
