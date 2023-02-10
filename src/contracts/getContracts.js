@@ -51,8 +51,6 @@ export const switchNetwork = async (
   account,
   switchToChainDECIMAL = "1"
 ) => {
-  //
-
   try {
     await window.ethereum.request({
       method: "wallet_switchEthereumChain",
@@ -61,7 +59,7 @@ export const switchNetwork = async (
   } catch (error) {
     if (error.code === 4902) {
       try {
-        await web3.ethereum.request({
+        await window.ethereum.request({
           method: "wallet_addEthereumChain",
           params: [chainInfo, account],
         });
