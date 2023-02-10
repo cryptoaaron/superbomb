@@ -73,7 +73,7 @@ const Topbar = () => {
                 </a>
               </li>
               <li className="nav-item">
-                <a className="nav-link" href="https://www.bombswap.xyz/swap">
+                <a className="nav-link" href="https://www.bombswap.xyz/swap?inputCurrency=ETH&outputCurrency=0x2a4a10237CBec8ef5FFe4eE4770D467966c4FEc4">
                   Swap
                 </a>
               </li>
